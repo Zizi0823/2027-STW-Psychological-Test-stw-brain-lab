@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>STW Brain Lab｜你的腦迴路到底是哪一型？</title>
+<meta name="description" content="8 題測出你的思考人格、隱藏優勢，找出你最合拍的最佳好夥伴！">
+<meta property="og:title" content="STW Brain Lab｜你的腦迴路到底是哪一型？">
+<meta property="og:description" content="8 題測出你的思考人格、隱藏優勢，找出你最合拍的最佳好夥伴！">
+<meta property="og:image" content="img/poster-brain.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F7C72B">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&family=Permanent+Marker&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: one phone-width app column on a yellow poster ground; each screen is a torn-paper collage card */
+:root{
+  --yellow:#F7C72B;
+  --yellow-deep:#E9AE0C;
+  --ink:#161513;
+  --paper:#F4EFE3;
+  --paper-2:#E9E2D2;
+  --muted:#5D574B;
+  --f-display:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-marker:"Permanent Marker","Noto Sans TC",cursive;
+  --f-hand:"Caveat","Noto Sans TC",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;background:var(--yellow);color:var(--ink);font-family:var(--f-body);
+  -webkit-font-smoothing:antialiased;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:20px 36px;
+}
+.app{max-width:440px;margin:0 auto;position:relative}
+.screen{background:var(--paper);border-radius:6px;position:relative;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.08),0 14px 30px -14px rgba(60,40,0,.45);
+  animation:pop .35s ease both}
+.screen[hidden]{display:none!important}
+@keyframes pop{from{transform:translateY(10px) rotate(-.4deg);opacity:.0}to{transform:none;opacity:1}}
+.pad{padding:22px 22px 26px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* brand */
+.logo{display:block;height:54px;width:auto;max-width:66%;object-fit:contain;object-position:left center}
+.logo-full{height:46px;max-width:82%}
+.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.hand{font-family:var(--f-hand);font-weight:700;font-size:21px;line-height:.95;transform:rotate(-8deg);display:inline-block}
+
+/* torn tape */
+.tape{display:inline-block;background:var(--paper);padding:.12em .35em .18em;position:relative;
+  clip-path:polygon(0 6%,4% 0,12% 5%,22% 1%,35% 4%,48% 0,61% 5%,74% 1%,86% 4%,96% 0,100% 7%,98% 30%,100% 55%,98% 80%,100% 96%,92% 100%,80% 96%,66% 100%,52% 95%,38% 100%,24% 96%,11% 100%,2% 95%,1% 70%,0 45%,2% 22%)}
+.tape.y{background:var(--yellow)}
+.tape.k{background:var(--ink);color:var(--paper)}
+.hl{background:linear-gradient(transparent 62%,var(--yellow) 62%,var(--yellow) 92%,transparent 92%)}
+
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
+.big{font-weight:900;font-size:clamp(40px,12vw,54px);line-height:1.04;letter-spacing:-.02em}
+.mid{font-weight:900;font-size:clamp(26px,7.4vw,32px);line-height:1.15}
+
+/* buttons */
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:var(--yellow);border:2.5px solid var(--ink);border-radius:999px;padding:15px 22px;
+  font-weight:900;font-size:19px;letter-spacing:.04em;box-shadow:3px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:4px 5px 0 var(--ink)}
+.cta:active{transform:translate(2px,3px);box-shadow:1px 1px 0 var(--ink)}
+.cta.dark{background:var(--ink);color:var(--paper)}
+.cta.light{background:var(--paper)}
+.cta.sm{font-size:15px;padding:12px 14px;box-shadow:2px 3px 0 var(--ink)}
+.linkish{background:none;border:0;font-weight:700;text-decoration:underline;text-underline-offset:4px;padding:8px;font-size:15px}
+.arrow{font-family:var(--f-body);font-weight:900}
+
+/* collage art */
+.art{position:relative}
+.art img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.torn-b{clip-path:polygon(0 0,100% 0,100% 92%,94% 96%,87% 91%,79% 97%,70% 93%,62% 98%,52% 92%,43% 97%,33% 93%,24% 98%,15% 92%,7% 97%,0 93%)}
+.spark{position:absolute;width:22px;height:22px}
+.spark path{fill:var(--ink)}
+.spark.y path{fill:var(--yellow);stroke:var(--ink);stroke-width:1.4}
+
+/* home */
+.home-hero{display:grid;gap:14px;margin-top:18px}
+.home-hero .big .tape.y{margin:2px 0}
+.home-copy{font-weight:900;font-size:19px;line-height:1.5;margin:4px 0 0}
+.home-copy .em{color:var(--yellow-deep);-webkit-text-stroke:.4px var(--ink)}
+.home-sub{font-weight:700;font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:20px -22px 0;height:190px;position:relative}
+.quad .art{height:100%}
+.quad .art:nth-child(odd){transform:translateY(8px)}
+.quad .art img{object-position:center 20%}
+.quad::after{content:"";position:absolute;inset:auto 0 0 0;height:36px;background:var(--paper);
+  clip-path:polygon(0 60%,8% 30%,17% 55%,26% 20%,36% 50%,47% 25%,58% 55%,68% 22%,79% 50%,90% 28%,100% 52%,100% 100%,0 100%)}
+.home-foot{display:grid;gap:8px;justify-items:center;margin-top:6px}
+
+/* cover (home) */
+#s-home{display:flex;flex-direction:column}
+#s-quiz,#s-load,#s-types{display:flex;flex-direction:column;min-height:var(--screen-h,auto)}
+#s-quiz{min-height:min(var(--screen-h,auto),calc(100dvh - 56px))}
+#s-quiz .qimg{flex:none;height:clamp(140px,25dvh,220px)}
+#s-quiz .qimg img{object-position:center 40%}
+#s-quiz .qbar{padding:10px 14px 8px}
+#s-quiz .opts{gap:8px;padding:14px 16px 18px}
+#s-quiz .opt{min-height:50px;padding:8px 12px 8px 8px;font-size:15px}
+#s-quiz .qtext{margin:-30px 12px 0}
+#s-quiz .qtext h2{display:block}
+#s-quiz .qtext h2{font-size:clamp(18px,5vw,21px)}
+#s-load .pad{flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover-top{position:relative;padding:20px 22px 0;z-index:2}
+.cover-top .icon-btn{margin:-4px -8px 0 0}
+.cover-portrait{position:absolute;top:8px;right:-4px;width:58%;max-width:250px;mix-blend-mode:multiply;z-index:0;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.cover-portrait img{display:block;width:100%;height:auto}
+.cover-head{position:relative;z-index:1;margin-top:58px;transform:rotate(-4deg);transform-origin:left bottom;
+  font-family:var(--f-display);font-weight:900;line-height:1.02;letter-spacing:-.02em}
+.cover-head .l1{display:block;font-size:clamp(44px,13vw,58px)}
+.cover-head .l2{display:inline-block;position:relative;font-size:clamp(54px,16vw,72px);margin:2px 0 4px}
+.cover-head .l2::before{content:"";position:absolute;left:-10px;right:46%;top:18%;bottom:6%;background:var(--yellow);z-index:-1;transform:skewX(-8deg)}
+.cover-head .l3{display:block;font-size:clamp(32px,9.6vw,42px)}
+.cover-head .q{color:var(--yellow);-webkit-text-stroke:0;font-size:1.35em;line-height:0;vertical-align:-.04em;margin-left:-2px;text-shadow:1px 1px 0 var(--yellow-deep)}
+.cover-copy{position:relative;z-index:1;margin:26px 0 0;transform:rotate(-2deg);transform-origin:left;
+  font-weight:900;font-size:clamp(21px,6vw,25px);line-height:1.45}
+.cover-copy .em{display:inline-block;color:var(--ink);background:var(--yellow);padding:0 .22em;margin:0 .08em;transform:rotate(-3deg);box-shadow:2px 3px 0 var(--ink);border:2px solid var(--ink);border-radius:4px;line-height:1.25}
+.cover-sub{position:relative;z-index:1;margin:14px 0 0;transform:rotate(-2deg);transform-origin:left;
+  font-weight:700;font-size:clamp(16px,4.6vw,18px);line-height:1.55}
+.cover-trail{position:relative;margin-top:14px}
+.cover-trail img{display:block;width:100%;height:clamp(170px,50vw,215px);object-fit:cover;object-position:40% 70%;filter:contrast(1.04)}
+.cover-trail::before{content:"";position:absolute;inset:0 0 auto 0;height:34%;background:linear-gradient(var(--paper),rgba(244,239,227,0));z-index:1}
+.cover-trail .hand{position:absolute;right:16px;top:30%;z-index:2;color:var(--yellow);font-size:22px;transform:rotate(-12deg);text-shadow:0 1px 0 var(--ink)}
+.cover-cta{position:relative;z-index:3;margin:-38px 22px 0;padding-bottom:22px;display:grid;gap:6px;justify-items:center}
+.cover-cta .cta{box-shadow:0 6px 0 rgba(22,21,19,.85)}
+.cover-cta .linkish{color:var(--ink)}
+
+/* types */
+.types{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.tcard{background:#fff;border:2px solid var(--ink);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tcard .art{height:118px;background:var(--yellow)}
+.tcard .art img{object-position:center 25%}
+.tcard div.txt{padding:10px 10px 12px;display:grid;gap:4px}
+.tcard h3{font-size:17px;font-weight:900}
+.tcard p{margin:0;font-size:12.5px;line-height:1.5;color:var(--muted);font-weight:500}
+
+/* quiz */
+.qbar{display:grid;grid-template-columns:36px 1fr 36px;align-items:center;gap:6px;padding:14px 14px 10px}
+.icon-btn{width:36px;height:36px;border:0;background:none;display:grid;place-items:center;border-radius:50%}
+.icon-btn:hover{background:var(--paper-2)}
+.icon-btn svg{width:20px;height:20px;stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.prog{display:grid;gap:5px;justify-items:center}
+.prog span{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.track{width:100%;height:8px;border-radius:9px;background:var(--paper-2);border:1.5px solid var(--ink);overflow:hidden}
+.track i{display:block;height:100%;background:var(--yellow);transition:width .35s ease}
+.qimg{height:200px;margin:0 14px;border-radius:4px;overflow:hidden}
+.qimg img{filter:none}
+.qtext{position:relative;margin:-38px 26px 0;transform:rotate(-1deg);text-align:center;z-index:2}
+.qtext h2{font-size:clamp(19px,5.4vw,22px);font-weight:900;line-height:1.4;padding:.35em .5em}
+.opts{display:grid;gap:10px;padding:18px 16px 22px}
+.opt{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:12px;text-align:left;width:100%;
+  background:#fff;border:2px solid var(--ink);border-radius:14px;padding:10px 14px 10px 10px;min-height:58px;
+  font-weight:700;font-size:15.5px;line-height:1.45;transition:transform .12s,background .15s,box-shadow .15s;box-shadow:0 2px 0 var(--ink)}
+.opt:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--ink)}
+.opt .l{width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-weight:900;font-size:16px;background:var(--paper)}
+.opt.on{background:var(--yellow)}
+.opt.on .l{background:var(--ink);color:var(--yellow)}
+
+/* loading */
+.load{text-align:center}
+.load .art{width:230px;height:230px;margin:26px auto 6px;border-radius:50%;overflow:hidden;background:var(--yellow);border:3px solid var(--ink)}
+.load .art img{object-position:center 18%}
+.load h2{font-size:28px;font-weight:900;margin-top:16px}
+.load p{margin:6px 0 18px;color:var(--muted);font-weight:700}
+.bar{height:14px;border:2px solid var(--ink);border-radius:9px;overflow:hidden;background:#fff;margin:0 8px}
+.bar i{display:block;height:100%;width:0;background:var(--yellow);transition:width .5s ease}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:20px}
+.steps div{display:grid;justify-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted)}
+.steps b{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s}
+.steps b svg{width:14px;height:14px;stroke:var(--ink);stroke-width:3;fill:none;opacity:0}
+.steps div.done{color:var(--ink)}
+.steps div.done b{background:var(--yellow)}
+.steps div.done b svg{opacity:1}
+
+/* result */
+.res-head{display:grid;gap:8px;margin-top:14px}
+.res-head .pre{font-weight:900;font-size:17px}
+.res-name{font-size:clamp(38px,11.5vw,50px);font-weight:900;line-height:1.1;transform:rotate(-2deg);transform-origin:left;justify-self:start}
+.quote{position:relative;font-weight:700;font-size:16px;line-height:1.7;margin:10px 0 0;padding-left:30px}
+.quote::before{content:"“";position:absolute;left:0;top:-14px;font-family:Georgia,serif;font-size:50px;font-weight:900}
+.res-art{height:260px;margin:14px -22px 0;background:var(--yellow)}
+.res-art img{object-position:center 22%}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tags span{border:2px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:900;font-size:14px;background:#fff}
+.sec{margin-top:26px}
+.sec-t{font-size:20px;font-weight:900;display:flex;align-items:center;gap:8px}
+.sec-t svg{width:34px;height:20px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round}
+.radar{display:block;width:100%;max-width:360px;margin:6px auto 0;height:auto}
+.radar text{font-family:var(--f-body);fill:var(--ink)}
+.match{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin-top:12px;background:#fff;border:2px solid var(--ink);border-radius:14px;overflow:hidden}
+.match .art{height:118px;background:var(--yellow);align-self:stretch}
+.match .art img{object-position:center 22%}
+.match div.txt{padding:12px 12px 12px 0;display:grid;gap:6px;min-width:0}
+.match h4{margin:0;font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:.04em}
+.match h3{font-size:19px;font-weight:900}
+.match p{margin:0;font-size:13.5px;line-height:1.55;font-weight:500}
+.actions{display:grid;gap:10px;margin-top:26px}
+
+/* prizes */
+/* STW superpower */
+.power{margin-top:34px;background:var(--yellow);border:2.5px solid var(--ink);border-radius:16px;padding:18px 16px 18px;position:relative;box-shadow:4px 5px 0 var(--ink)}
+.power-head{display:grid;gap:4px}
+.power-head .badge{grid-column:1/-1;justify-self:start}
+.power-head>div{min-width:0}
+.power .badge{display:inline-block;background:var(--ink);color:var(--yellow);font-weight:900;font-size:14px;padding:4px 10px;transform:rotate(-2deg);border-radius:3px}
+.power .step{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--f-marker);color:var(--ink);font-size:clamp(42px,12.5vw,58px);line-height:1;margin:14px 0 0;font-weight:400;letter-spacing:.01em}
+.power .step small{display:inline-block;flex:0 0 auto;white-space:nowrap;font-family:var(--f-body);font-weight:900;font-size:clamp(16px,4.6vw,19px);letter-spacing:0;line-height:1.35;background:var(--paper);padding:2px 8px;transform:rotate(-1deg)}
+.power .portrait{position:relative;margin:4px 0 0;width:118px;aspect-ratio:4/5;background:var(--paper);padding:6px 6px 18px;border:2px solid var(--ink);transform:rotate(4deg);box-shadow:3px 4px 0 var(--ink)}
+.power .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;filter:grayscale(1) contrast(1.05)}
+.power .portrait::after{content:"";position:absolute;top:-10px;left:50%;width:56px;height:18px;margin-left:-28px;background:rgba(244,239,227,.85);border:1px solid rgba(22,21,19,.15);transform:rotate(-6deg)}
+.power .note{position:relative;margin-top:14px;background:var(--paper);border:2px solid var(--ink);border-radius:4px;padding:14px 14px 12px;transform:rotate(-.6deg)}
+.power .note p{margin:0;font-size:15px;line-height:1.75;font-weight:700}
+.power .stage{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 6px;margin-top:10px;background:var(--yellow);border:1.5px solid var(--ink);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700}
+.power .stage b{font-weight:900}
+.power .cta{margin-top:16px;font-size:16px;padding:14px 16px;text-decoration:none}
+.power .spark{position:absolute;right:-12px;top:-12px;width:28px;height:28px}
+.power .spark path{fill:var(--paper);stroke:var(--ink);stroke-width:1.4}
+
+/* deadline sticker beside prize headline */
+.prize-top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.prize-top .prize-head{min-width:0;white-space:nowrap;font-size:clamp(24px,7.6vw,38px)}
+.deadline{flex:none;display:grid;justify-items:center;gap:1px;background:var(--yellow);border:2px solid var(--ink);border-radius:10px;padding:6px 10px 7px;transform:rotate(5deg);box-shadow:2px 3px 0 var(--ink);margin-top:4px;text-align:center}
+.deadline small{font-size:11.5px;font-weight:900;letter-spacing:.06em}
+.deadline b{font-size:clamp(22px,6.6vw,28px);font-weight:900;line-height:1.05;font-variant-numeric:tabular-nums}
+.deadline span{font-size:11.5px;font-weight:700;background:var(--ink);color:var(--yellow);border-radius:999px;padding:1px 7px;margin-top:2px;white-space:nowrap}
+.prize-sub span{white-space:nowrap}
+.prize-sub{margin:12px 0 0;font-size:clamp(12px,3.4vw,13.5px);font-weight:700;color:var(--muted);line-height:1.6}
+.prize-sub i{font-style:normal;margin:0 4px;color:var(--ink);opacity:.5}
+.ig-tip{display:flex;align-items:center;gap:8px;background:var(--yellow);color:var(--ink);border-radius:10px;padding:8px 12px;font-weight:900;font-size:14px;transform:rotate(-1.5deg);max-width:300px}
+.ig-tip a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.ig-tip svg{width:22px;height:22px;flex:none;stroke:var(--ink);stroke-width:2;fill:none}
+.fine{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--muted);font-weight:500;text-align:center}
+.prize{margin-top:34px}
+.prize-head{font-size:clamp(30px,9vw,38px);font-weight:900;line-height:1.2;transform:rotate(-2deg);transform-origin:left}
+.prize-head .tape{padding:0 .18em}
+.prize-art{margin:10px -22px 0;position:relative}
+.prize-art img{display:block;width:100%;height:auto}
+.prize-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:-18px}
+.pcard{background:#fff;border:2px solid var(--ink);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.pcard .top{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:start;padding:10px 10px 8px}
+.pcard .ico{width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply}
+.pcard .lbl{display:inline-block;background:var(--yellow);border-radius:999px;padding:2px 10px;font-weight:900;font-size:13px;justify-self:start}
+.pcard h3{grid-column:1/-1;font-size:clamp(15px,4.4vw,18px);font-weight:900;line-height:1.35}
+.pcard .pic{margin-top:auto}
+.pcard .pic img{display:block;width:100%;height:auto}
+.pcard.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:6px;padding:10px 6px 10px 10px}
+.pcard.wide .top{flex:1;padding:0;grid-template-columns:44px 1fr;row-gap:6px;align-items:center}
+.pcard.wide .ico{grid-row:1/3;width:44px;height:56px}
+.pcard.wide h3{grid-column:2}
+.pcard.wide .cert{width:34%;max-width:120px;mix-blend-mode:multiply}
+.prize-note{margin:12px 0 0;font-size:13px;color:var(--muted);font-weight:700;text-align:center}
+.actions .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* share modal */
+.modal{position:fixed;inset:0;z-index:20;background:rgba(22,21,19,.82);display:grid;place-items:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal .inner{max-width:340px;width:100%;display:grid;gap:12px;justify-items:center}
+.modal img{width:100%;border-radius:8px;max-height:72vh;object-fit:contain;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.modal p{color:var(--paper);font-weight:700;font-size:14px;margin:0;text-align:center}
+
+/* end */
+.end h1{font-size:clamp(34px,10vw,44px);font-weight:900;line-height:1.25;margin-top:16px}
+.end p.lead{font-weight:700;font-size:16px;line-height:1.7;margin:14px 0 0}
+.end .art{height:250px;margin:18px -22px 0;background:var(--yellow)}
+.end .art img{object-position:center 30%}
+
+.foot-hand{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="app" id="app">
+
+  <!-- HOME -->
+  <section class="screen" id="s-home">
+    <div class="cover-top">
+      <div class="cover-portrait" aria-hidden="true"><img src="img/home-hero.jpg" alt=""></div>
+      <div class="topline" style="position:relative;z-index:2">
+        <img class="logo" src="img/logo-stw.png" alt="See Think Wonder 思考挑戰賽">
+        <button class="icon-btn" id="btn-menu" aria-label="四種思考人格"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+      <h1 class="cover-head">
+        <span class="l1">你的</span>
+        <span class="l2">腦迴路</span>
+        <span class="l3">到底是哪一型<span class="q">？</span></span>
+      </h1>
+      <p class="cover-copy">朋友覺得你想太多？<br>才怪！你根本是<span class="em">腦動王</span>！</p>
+      <p class="cover-sub">測出你的思考人格、隱藏優勢<br>找出你最合拍的最佳好夥伴！</p>
+    </div>
+    <div class="cover-trail" aria-hidden="true">
+      <img src="img/home-trail.jpg" alt="">
+    </div>
+    <div class="cover-cta">
+      <button class="cta" id="btn-start">開始測驗 <span class="arrow">→</span></button>
+    </div>
+  </section>
+
+  <!-- TYPES -->
+  <section class="screen" id="s-types" hidden>
+    <div class="pad">
+      <div class="topline">
+        <img class="logo" src="img/logo-stw.png" alt="See Think Wonder 思考挑戰賽">
+        <button class="icon-btn" data-go="home" aria-label="回首頁"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <h1 class="mid" style="margin-top:14px"><span class="tape y">四種思考人格</span><br>你是哪一型？</h1>
+      <div class="types" id="types"></div>
+      <div style="margin-top:20px"><button class="cta" data-start>開始測驗 <span class="arrow">→</span></button></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="screen" id="s-quiz" hidden>
+    <div class="qbar">
+      <button class="icon-btn" id="q-back" aria-label="上一題"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="prog"><span id="q-count">1/8</span><div class="track"><i id="q-track"></i></div></div>
+      <button class="icon-btn" data-go="home" aria-label="離開測驗"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="qimg art"><img id="q-img" src="img/q1.jpg" alt=""></div>
+    <div class="qtext"><h2 class="tape" id="q-title"></h2></div>
+    <div class="opts" id="q-opts"></div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="screen" id="s-load" hidden>
+    <div class="pad load">
+      <div class="topline"><img class="logo" src="img/logo-stw.png" alt="See Think Wonder 思考挑戰賽"><span class="hand">BRAIN<br>LAB</span></div>
+      <div class="art"><img src="img/brain.jpg" alt=""></div>
+      <h2>分析中…</h2>
+      <p>正在解析你的腦迴路</p>
+      <div class="bar"><i id="load-bar"></i></div>
+      <div class="steps" id="steps">
+        <div><b><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></b>思考模式</div>
+        <div><b><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></b>能力傾向</div>
+        <div><b><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></b>相處類型</div>
+        <div><b><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></b>專屬結果</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="s-result" hidden>
+    <div class="pad">
+      <div class="topline">
+        <img class="logo" src="img/logo-stw.png" alt="See Think Wonder 思考挑戰賽">
+        <span class="hand" id="r-hand"></span>
+      </div>
+      <div class="res-head">
+        <span class="pre">你的思考人格是…</span>
+        <h1 class="res-name tape y" id="r-name"></h1>
+      </div>
+      <p class="quote" id="r-quote"></p>
+      <div class="res-art art torn-b"><img id="r-img" src="img/brain.jpg" alt=""></div>
+      <div class="tags" id="r-tags"></div>
+
+      <div class="sec">
+        <h2 class="sec-t">你的能力分析圖</h2>
+        <svg class="radar" id="radar" viewBox="0 0 360 330" role="img" aria-label="能力分析雷達圖"></svg>
+        <p class="fine">依你的 8 題作答計算，是趣味的思考傾向指標，不是能力測驗分數。</p>
+      </div>
+
+      <div class="sec">
+        <h2 class="sec-t">最佳夥伴 <svg viewBox="0 0 34 20"><path d="M2 14c6-9 12 4 18-4s8-2 12-6M26 3l6 1-2 6"/></svg></h2>
+        <div id="r-match"></div>
+        <p class="fine">＊娛樂性人格配對，僅供參考。</p>
+      </div>
+
+      <div class="power" id="r-power">
+        <div class="power-head">
+          <span class="badge">你在 STW 的超能力</span>
+          <div><h2 class="step" id="p-step"></h2></div>
+        </div>
+        <div class="note">
+          <p id="p-text"></p>
+          <div class="stage">最能發揮：<b id="p-stage"></b></div>
+        </div>
+        <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.4 4.8 10.6 12 12-7.2 1.4-11.2 5.6-12 12-.8-6.4-4.8-10.6-12-12C7.2 10.6 11.2 6.4 12 0z"/></svg>
+      </div>
+
+      <div class="prize">
+        <div class="prize-top">
+          <h2 class="prize-head">動腦又有<span class="tape y">好禮</span><br>不要錯過喔！</h2>
+          <div class="deadline" id="countdown" aria-live="polite">
+            <small>報名截止</small>
+            <b>12/21</b>
+            <span id="count-left">倒數 -- 天</span>
+          </div>
+        </div>
+        <p class="prize-sub"><span>12–18 歲國、高中生</span><i>／</i><span>12/21 報名截止</span><i>／</i><span>免費參加</span></p>
+        <div class="prize-art" aria-hidden="true"><img src="img/prize-boy.jpg" alt=""></div>
+        <div class="prize-grid">
+          <article class="pcard">
+            <div class="top">
+              <img class="ico" src="img/prize-trophy.png" alt="">
+              <span class="lbl">冠軍</span>
+              <h3>台灣－香港<br>來回機票</h3>
+            </div>
+            <div class="pic"><img src="img/prize-plane.jpg" alt="飛機飛越香港天際線"></div>
+          </article>
+          <article class="pcard">
+            <div class="top">
+              <img class="ico" src="img/prize-medal.png" alt="">
+              <span class="lbl">1 名優勝</span>
+              <h3>美國 HTH<br>兩週全額計畫</h3>
+            </div>
+            <div class="pic"><img src="img/prize-hth.jpg" alt="美國校園建築"></div>
+          </article>
+          <article class="pcard wide">
+            <div class="top">
+              <img class="ico" src="img/prize-gold.png" alt="">
+              <span class="lbl">金／銀／銅獎</span>
+              <h3>STW 思考力證書</h3>
+            </div>
+            <img class="cert" src="img/prize-cert.png" alt="">
+          </article>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="cta signup" href="https://www.stwchallenge.org/apply" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)">前往 STW 報名 <span class="arrow">→</span></a>
+        <div class="row">
+          <button class="cta sm dark" data-start>↻ 重新測驗</button>
+          <button class="cta sm light" id="btn-share">↓ 下載分享卡</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- END -->
+  <section class="screen end" id="s-end" hidden>
+    <div class="pad">
+      <div class="topline">
+        <img class="logo logo-full" src="img/logo-full.png" alt="See Think Wonder 思考挑戰賽｜雙橡教育 Twin Oaks">
+        <button class="icon-btn" data-go="result" aria-label="回到結果"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      </div>
+      <h1>帶著你的<br><span class="tape y">思考超能力</span><br>挑戰 STW！</h1>
+      <p class="lead">用你的觀察、思考與提問，看見更多可能，和來自全台的國高中生一起挑戰更大的舞台！</p>
+      <div class="art torn-b"><img src="img/action.jpg" alt=""></div>
+      <div style="margin-top:6px;display:grid;gap:8px;justify-items:center">
+        <a class="cta" id="btn-signup" href="#" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)">前往 STW 報名 <span class="arrow">→</span></a>
+        <button class="linkish" data-start>再測一次</button>
+      </div>
+      <div class="foot-hand"><span class="hand">IDEA<br>ACTION<br>RESULT ↗</span><span class="hand">SEE THINK<br>WONDER</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="inner">
+    <img id="share-img" src="img/poster-brain.jpg" alt="你的思考人格分享卡">
+    <button class="cta sm" id="share-dl" style="max-width:240px">↓ 下載 PNG</button>
+    <p id="share-msg">也可以長按圖片（手機）或按右鍵（電腦）另存</p>
+    <div class="ig-tip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg><span>發 IG 限動記得 tag <a class="ig-handle" href="https://www.instagram.com/stw.challenge/" target="_blank" rel="noopener">@stw.challenge</a>，讓我們看到你的腦迴路！</span></div>
+    <button class="linkish" id="modal-close" style="color:var(--paper)">關閉</button>
+  </div>
+</div>
+
+<script>
+// 報名連結：換成 STW 正式報名網址
+const SIGNUP_URL = "https://www.stwchallenge.org/apply";
+
+// 後台紀錄：貼上 Google Apps Script 部署後的網址（見 README）。留空就不記錄。
+const TRACK_URL = "https://script.google.com/macros/s/AKfycbxqpvVx_AV4mj--tqz5EawYmKeD9Wanw0rVjzL6Bt_yPLBy4DGPGvBasnvt_9XJWuA/exec";
+const SID = Math.random().toString(36).slice(2,10) + Date.now().toString(36);
+function track(event, extra){
+  if(!TRACK_URL) return;
+  const body = JSON.stringify(Object.assign({event, sid:SID, ref:document.referrer||"", ua:navigator.userAgent}, extra||{}));
+  try{
+    if(navigator.sendBeacon && navigator.sendBeacon(TRACK_URL, new Blob([body],{type:"text/plain;charset=utf-8"}))) return;
+  }catch(e){}
+  try{ fetch(TRACK_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body,keepalive:true}); }catch(e){}
+}
+track("visit");
+// 報名截止：2026/12/21 23:59（台灣時間）
+const DEADLINE = Date.UTC(2026, 11, 21, 15, 59, 59);
+// IG 帳號：換成 STW 正式帳號
+const IG_HANDLE = "@stw.challenge";
+const IG_URL = "https://www.instagram.com/stw.challenge/";
+function updateCountdown(){
+  const el = document.getElementById("count-left");
+  if(!el) return;
+  const ms = DEADLINE - Date.now();
+  if(ms <= 0){ el.textContent = "已截止"; return; }
+  const n = Math.ceil(ms / 86400000);
+  el.textContent = n <= 1 ? "今天截止！" : "倒數 " + n + " 天";
+}
+document.querySelectorAll(".ig-handle").forEach(e => { e.textContent = IG_HANDLE; e.href = IG_URL; });
+
+const TYPES = {
+  detail:{name:"細節雷達型",
+    stw:{step:"SEE｜看見別人沒看見的",text:"STW 的第一步就是「See」：仔細觀察。報告書關卡裡，你最會從素材中挖出別人漏掉的線索，評審最想看到的正是這種「原來還能注意到這個」的觀察。",stage:"報告書書審"},hand:"SEE<br>THE<br>DETAILS",img:"img/detail.jpg",poster:"img/poster-detail.jpg",
+    intro:"你總能發現別人沒看到的細節，是團隊中的觀察家。",
+    quote:"你擁有敏銳的觀察力，總能從細節中發現線索，看見別人忽略的關鍵。",
+    tags:["觀察力強","很會抓重點","最先發現問題"],
+    mate:["brain","你負責發現別人沒注意到的小細節，對方負責把一件小事腦補成超精彩的故事。你們在一起，可能永遠不缺話題！"],
+    work:["action","你負責發現問題，對方負責把事情往前推。一個不放過細節、一個不拖延進度，超適合一起完成大挑戰！"]},
+  logic:{name:"邏輯拆解型",
+    stw:{step:"THINK｜把想法講得有憑有據",text:"STW 的「Think」要你說清楚為什麼這樣想。線上口試時，你能把觀察一步步推到結論，評審追問也不慌，這正是拉開分數的地方。",stage:"線上口試"},hand:"THINK<br>ANALYZE<br>ORGANIZE",img:"img/logic.jpg",poster:"img/poster-logic.jpg",
+    intro:"你喜歡理出脈絡、分析原因，把複雜的事情整清楚。",
+    quote:"你擅長整理複雜的資訊，用清晰的邏輯拆解問題，讓混亂的事情變得有條理。",
+    tags:["推理力強","超有條理","擅長分析"],
+    mate:["action","你負責把來龍去脈想清楚，對方負責說走就走。你幫他踩剎車，他帶你衝出舒適圈，相處起來剛剛好！"],
+    work:["brain","你負責把問題拆清楚，對方負責丟出別人想不到的解法。一個有結構、一個有驚喜，報告想不拿高分都難！"]},
+  brain:{name:"腦洞發射型",
+    stw:{step:"WONDER｜問出沒人想到的問題",text:"STW 的「Wonder」就是好奇與提問。你天馬行空的聯想，能讓隊伍的報告和提案多一個讓人眼睛一亮的角度，評審一定會記住你們。",stage:"報告書書審、實體黑客松"},hand:"IDEA<br>IDEA<br>IDEA!",img:"img/brain.jpg",poster:"img/poster-brain.jpg",
+    intro:"你總能想出不同的可能，讓平凡的事情變得有趣。",
+    quote:"你總是能在平凡中看見不平凡，腦袋裡有源源不絕的點子，一個小靈感也能做成一個大計畫！",
+    tags:["創意力爆棚","點子超多","腦袋轉很快"],
+    mate:["detail","你負責丟出天馬行空的點子，對方總能接住其中最有趣的細節。你講得越誇張，他聽得越認真，聊天永遠不冷場！"],
+    work:["action","你點子多到用不完，對方最會把點子做出來。你負責「如果這樣會怎樣？」，他負責「那就開始吧！」，想法馬上落地！"]},
+  action:{name:"行動推進型",
+    stw:{step:"ACTION｜把點子做出來",text:"決賽是實體黑客松，要在有限時間內把點子做出來。你最會分工、推進度，有你在，隊伍的想法不會只停在紙上。",stage:"實體黑客松"},hand:"ACTION<br>MAKES<br>IDEAS REAL",img:"img/action.jpg",poster:"img/poster-action.jpg",
+    intro:"你不只會想，更會把想法變成行動，帶大家往前走。",
+    quote:"你擅長把想法化為行動，勇於嘗試、快速推進，是讓計畫發生的關鍵力量！",
+    tags:["行動力高","超會執行","把點子做出來"],
+    mate:["logic","你衝第一、他想第二步。你帶他去冒險，他幫你把衝動變成有計畫的行程，一起出門永遠不會迷路！"],
+    work:["detail","你負責往前衝，對方負責幫你看清路上的坑。速度加上細心，任務又快又穩地完成！"]}
+};
+const ORDER = ["detail","logic","brain","action"]; // A B C D
+
+const QS = [
+  ["班群突然安靜下來，你第一個在想什麼？",["欸？我是不是錯過什麼重要訊息？","一定有瓜，先來看發生什麼事 👀","太好了，終於沒人洗版了","有人知道發生什麼嗎？直接問比較快"]],
+  ["朋友傳來：「我跟你說喔，但你不要跟別人講。」你會？",["先問：「等等，你說的是誰？」","直接回：「快講快講！！」🍿","有點怕聽完又被捲進什麼事情","先說好，真的很嚴重的事要想辦法處理欸"]],
+  ["上台報告前 10 分鐘，組員還在擺爛，你會？",["開始瘋狂確認到底哪些東西還沒做","內心已經寫好一篇抱怨文了 🙂","算了！臨場發揮，說不定效果還更好","直接叫大家分工，至少先把報告交出去"]],
+  ["你看到朋友限動寫：「有些人真的很會演。」你的反應是？",["開始回想最近有誰跟他不對盤","蛤？？？到底在說誰？想吃瓜","有沒有可能他其實只是在講一部劇？","私訊問他還好嗎，需不需要聊聊"]],
+  ["老師說下週要交一個自由主題作品，你第一個念頭是？",["先研究一下規則，免得做完才發現不符合","救命，又有作業！先看大家要做什麼","終於可以做點不一樣的東西了！","先開文件，想到什麼再慢慢補"]],
+  ["朋友跟別人吵架，跑來找你抱怨，你會？",["先聽完兩邊發生什麼事，不急著下結論","陪他一起罵兩句，讓他先消消氣","突然想到一個方式，可以讓他們不那麼尷尬","問他現在想和好，還是想保持距離"]],
+  ["班上突然要辦一個活動，你最可能變成哪種人？",["默默注意到一堆可能出包的小細節","先問清楚預算、時間到底有多少","突然冒出一個超荒謬但好像很好玩的點子","不知不覺變成一直催進度的那個人"]],
+  ["朋友丟來一個超紅的人格測驗，你通常會？",["先看題目是不是在亂問，結果到底準不準","嘴上說無聊，結果還是默默測完","測完開始傳給大家，看誰跟我最合拍","先做再說，反正兩分鐘而已"]]
+];
+
+// STW BRAIN LAB scoring engine (shared by page and tests)
+const DIMS = ["OBS","LOG","CRE","COM","EMP","ACT"];
+const DIM_LABEL = {OBS:"觀察力",LOG:"推理力",CRE:"創意力",COM:"表達力",EMP:"共感力",ACT:"行動力"};
+
+// [OBS, LOG, CRE, COM, EMP, ACT] for options A–D of each question
+const WEIGHTS = [
+  [[3,1,0,0,0,0],[2,1,0,0,1,0],[0,0,0,0,1,0],[0,1,0,3,0,2]], // Q1
+  [[2,1,0,2,0,0],[0,0,0,3,1,0],[1,2,0,0,1,0],[0,2,0,2,2,1]], // Q2
+  [[3,1,0,0,0,1],[0,0,0,1,1,0],[0,0,3,1,0,2],[0,1,0,2,0,3]], // Q3
+  [[3,2,0,0,1,0],[1,0,0,1,0,0],[0,2,3,0,1,0],[0,0,0,3,3,2]], // Q4
+  [[2,3,0,0,0,1],[1,0,0,1,1,0],[0,0,3,0,0,1],[0,0,2,0,0,3]], // Q5
+  [[2,3,0,0,2,0],[0,0,0,2,3,0],[0,1,3,1,2,1],[0,2,0,3,3,1]], // Q6
+  [[3,1,0,0,0,1],[1,3,0,1,0,1],[0,0,3,2,0,0],[0,0,0,2,0,3]], // Q7
+  [[2,3,0,0,0,0],[0,0,0,0,0,1],[0,0,1,3,2,2],[0,0,0,0,0,3]]  // Q8
+];
+
+// theoretical max per dimension: sum over questions of the best option for that dimension
+const DIM_MAX = DIMS.map((_,d) => WEIGHTS.reduce((s,q) => s + Math.max(...q.map(o => o[d])), 0));
+
+// personality fit formulas on normalized (0–100) dimension scores
+const TYPE_FORMULA = {
+  detail: {OBS:.65, LOG:.20, EMP:.15},
+  logic:  {LOG:.65, OBS:.20, COM:.15},
+  brain:  {CRE:.70, COM:.15, LOG:.15},
+  action: {ACT:.70, COM:.20, EMP:.10}
+};
+const TYPE_CORE = {detail:"OBS", logic:"LOG", brain:"CRE", action:"ACT"};
+const TYPE_PRIORITY = ["detail","logic","brain","action"]; // final fixed tie-break
+
+function scoreAnswers(answers){
+  if(!Array.isArray(answers) || answers.length !== WEIGHTS.length) throw new Error("need " + WEIGHTS.length + " answers");
+  const raw = DIMS.map(() => 0);
+  answers.forEach((a,q) => {
+    const w = WEIGHTS[q][a];
+    if(!w) throw new Error("bad answer at Q" + (q+1));
+    w.forEach((v,d) => raw[d] += v);
+  });
+  const norm = {};
+  DIMS.forEach((k,d) => norm[k] = DIM_MAX[d] ? Math.round(raw[d] / DIM_MAX[d] * 100) : 0);
+  // fit uses unrounded values so rounding never decides the type
+  const exact = {};
+  DIMS.forEach((k,d) => exact[k] = DIM_MAX[d] ? raw[d] / DIM_MAX[d] * 100 : 0);
+  const fit = {};
+  for(const t in TYPE_FORMULA){
+    fit[t] = Object.entries(TYPE_FORMULA[t]).reduce((s,[k,w]) => s + exact[k]*w, 0);
+  }
+  const EPS = 1e-9;
+  const key = TYPE_PRIORITY.slice().sort((a,b) => {
+    if(Math.abs(fit[b]-fit[a]) > EPS) return fit[b]-fit[a];
+    const ca = exact[TYPE_CORE[a]], cb = exact[TYPE_CORE[b]];
+    if(Math.abs(cb-ca) > EPS) return cb-ca;
+    return TYPE_PRIORITY.indexOf(a) - TYPE_PRIORITY.indexOf(b);
+  })[0];
+  const stats = {};
+  DIMS.forEach(k => stats[DIM_LABEL[k]] = norm[k]);
+  return {key, stats, raw, fit};
+}
+
+const $ = id => document.getElementById(id);
+let cur = 0, answers = [], result = null, busy = false;
+
+function syncHeight(){
+  const h = $("s-home");
+  const was = h.hidden;
+  if(was){ h.style.cssText = "position:absolute;visibility:hidden;left:0;right:0"; h.hidden = false; }
+  const px = h.offsetHeight;
+  if(was){ h.hidden = true; h.style.cssText = ""; }
+  if(px) document.documentElement.style.setProperty("--screen-h", px + "px");
+}
+syncHeight();
+addEventListener("resize", syncHeight);
+addEventListener("load", syncHeight);
+try{ document.fonts && document.fonts.ready.then(syncHeight); }catch(e){}
+
+function show(name){
+  document.querySelectorAll(".screen").forEach(s => s.hidden = s.id !== "s-"+name);
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+// types grid
+$("types").innerHTML = ORDER.map(k => `
+  <article class="tcard"><div class="art"><img src="${TYPES[k].img}" alt=""></div>
+  <div class="txt"><h3>${TYPES[k].name}</h3><p>${TYPES[k].intro}</p></div></article>`).join("");
+
+function start(){ cur = 0; answers = []; result = null; renderQ(); show("quiz"); track("start"); }
+
+function renderQ(){
+  const [title, opts] = QS[cur];
+  $("q-count").textContent = `${cur+1}/${QS.length}`;
+  $("q-track").style.width = `${(cur+1)/QS.length*100}%`;
+  $("q-img").src = `img/q${cur+1}.jpg`;
+  $("q-title").textContent = title;
+  $("q-opts").innerHTML = opts.map((t,i) => `
+    <button class="opt${answers[cur]===i?' on':''}" data-i="${i}"><span class="l">${"ABCD"[i]}</span><span>${t}</span></button>`).join("");
+  busy = false;
+}
+
+$("q-opts").addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if(!b || busy) return;
+  busy = true;
+  answers[cur] = +b.dataset.i;
+  $("q-opts").querySelectorAll(".opt").forEach(o => o.classList.toggle("on", o===b));
+  setTimeout(() => {
+    if(cur < QS.length-1){ cur++; renderQ(); }
+    else finish();
+  }, 320);
+});
+$("q-back").addEventListener("click", () => { if(cur>0){ cur--; renderQ(); } else show("home"); });
+
+function compute(){
+  return scoreAnswers(answers);
+}
+
+function finish(){
+  result = compute();
+  track("complete",{type:TYPES[result.key].name,answers:answers.map(a=>"ABCD"[a]).join("")});
+  show("load");
+  const steps = [...$("steps").children];
+  steps.forEach(s => s.classList.remove("done"));
+  $("load-bar").style.width = "0";
+  steps.forEach((s,i) => setTimeout(() => {
+    s.classList.add("done");
+    $("load-bar").style.width = `${(i+1)*25}%`;
+  }, 450 + i*450));
+  setTimeout(renderResult, 450 + 4*450 + 300);
+}
+
+function renderResult(){
+  const T = TYPES[result.key];
+  $("r-hand").innerHTML = T.hand;
+  $("r-name").textContent = T.name;
+  $("r-quote").textContent = T.quote;
+  $("r-img").src = T.img;
+  $("r-tags").innerHTML = T.tags.map(t => `<span>#${t}</span>`).join("");
+  drawRadar(result.stats);
+  $("r-match").innerHTML = [["你最適合相處的人",T.mate],["你最適合合作的人",T.work]].map(([h,[k,txt]]) => `
+    <div class="match"><div class="art"><img src="${TYPES[k].img}" alt=""></div>
+    <div class="txt"><h4>${h}</h4><h3><span class="hl">${TYPES[k].name}</span></h3><p>${txt}</p></div></div>`).join("");
+  $("share-img").src = T.poster;
+  const [en, zh] = T.stw.step.split("｜");
+  $("p-step").innerHTML = en + "<small>" + zh + "</small>";
+  $("p-text").textContent = T.stw.text;
+  $("p-stage").textContent = T.stw.stage;
+  updateCountdown();
+  show("result");
+}
+
+function drawRadar(stats){
+  const dims = ["觀察力","推理力","創意力","表達力","共感力","行動力"];
+  const cx=180, cy=168, R=110;
+  const pt = (i,r) => { const a = -Math.PI/2 + i*Math.PI/3; return [cx + r*Math.cos(a), cy + r*Math.sin(a)]; };
+  const maxV = Math.max(...dims.map(d=>stats[d]));
+  let g = "";
+  [0.25,0.5,0.75,1].forEach(f => {
+    g += `<polygon points="${dims.map((_,i)=>pt(i,R*f).join(",")).join(" ")}" fill="${f===1?'#fff':'none'}" stroke="#161513" stroke-opacity="${f===1?.9:.18}" stroke-width="${f===1?2:1}"/>`;
+  });
+  dims.forEach((_,i) => { const [x,y]=pt(i,R); g += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#161513" stroke-opacity=".18"/>`; });
+  const poly = dims.map((d,i)=>pt(i,R*stats[d]/100).join(",")).join(" ");
+  g += `<polygon class="rp" points="${poly}" fill="#F7C72B" fill-opacity=".85" stroke="#161513" stroke-width="2" stroke-linejoin="round"/>`;
+  dims.forEach((d,i) => { const [x,y]=pt(i,R*stats[d]/100); g += `<circle cx="${x}" cy="${y}" r="3.5" fill="#161513"/>`; });
+  dims.forEach((d,i) => {
+    const [x,y] = pt(i,R+30);
+    const anchor = i===0||i===3 ? "middle" : (i<3 ? "start" : "end");
+    const dx = i===0||i===3 ? 0 : (i<3 ? -14 : 14);
+    const top = stats[d]===maxV;
+    g += `<text x="${x+dx}" y="${y-4}" text-anchor="${anchor}" font-size="14" font-weight="700">${d}</text>`;
+    g += `<text x="${x+dx}" y="${y+15}" text-anchor="${anchor}" font-size="17" font-weight="900" style="font-variant-numeric:tabular-nums">${top?`<tspan fill="#C98F00">${stats[d]}</tspan>`:stats[d]}</text>`;
+  });
+  $("radar").innerHTML = g;
+}
+
+// wiring
+$("btn-start").addEventListener("click", start);
+document.querySelectorAll("[data-start]").forEach(b => b.addEventListener("click", start));
+$("btn-menu").addEventListener("click", () => show("types"));
+document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => {
+  const to = b.dataset.go;
+  if(to==="result" && !result) return show("home");
+  show(to);
+}));
+$("btn-share").addEventListener("click", () => { $("share-msg").textContent = "也可以長按圖片（手機）或按右鍵（電腦）另存"; $("modal").hidden = false; });
+
+// share card -> PNG
+function posterPng(src){
+  return new Promise((res, rej) => {
+    const im = new Image();
+    im.onload = () => {
+      const c = document.createElement("canvas");
+      c.width = im.naturalWidth; c.height = im.naturalHeight;
+      c.getContext("2d").drawImage(im, 0, 0);
+      c.toBlob(b => b ? res(b) : rej(new Error("png")), "image/png");
+    };
+    im.onerror = rej;
+    im.src = src;
+  });
+}
+let dlCap;
+const dlReady = (window.claude && window.claude.use) ? window.claude.use("downloads").then(d => (dlCap = d)).catch(() => (dlCap = null)) : Promise.resolve(dlCap = null);
+$("share-dl").addEventListener("click", () => track("share",{type:result?TYPES[result.key].name:""}));
+$("share-dl").addEventListener("click", async () => {
+  if(!result) return;
+  const T = TYPES[result.key];
+  const name = "STW_" + T.name + "_分享卡.png";
+  const msg = $("share-msg");
+  msg.textContent = "準備圖片中…";
+  try{
+    const blob = await posterPng(T.poster);
+    await dlReady;
+    if(dlCap){
+      try{ await dlCap.save({filename:name, data:blob}); msg.textContent = "已下載分享卡 PNG"; }
+      catch(e){ msg.textContent = e && e.code === "declined" ? "已取消下載" : "這裡無法下載，請長按圖片（手機）或按右鍵（電腦）另存"; }
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    msg.textContent = "已下載分享卡 PNG（iPhone 若沒反應，請長按圖片存到照片）";
+  }catch(e){
+    msg.textContent = "下載失敗，請長按圖片（手機）或按右鍵（電腦）另存";
+  }
+});
+$("modal-close").addEventListener("click", () => { $("modal").hidden = true; });
+$("modal").addEventListener("click", e => { if(e.target.id==="modal") $("modal").hidden = true; });
+document.addEventListener("keydown", e => {
+  if(e.key==="Escape") $("modal").hidden = true;
+  if(!$("s-quiz").hidden && "1234abcdABCD".includes(e.key) && e.key.length===1){
+    const i = "1234".indexOf(e.key) >= 0 ? "1234".indexOf(e.key) : "abcd".indexOf(e.key.toLowerCase());
+    $("q-opts").children[i]?.click();
+  }
+});
+const su = $("btn-signup");
+if(SIGNUP_URL === "#"){ su.removeAttribute("target"); su.addEventListener("click", e => { e.preventDefault(); su.querySelector(".arrow").textContent = "（連結待設定）"; }); }
+else su.href = SIGNUP_URL;
+document.querySelectorAll('a[href*="stwchallenge"]').forEach(x => x.addEventListener("click", () => track("signup_click",{type:result?TYPES[result.key].name:"", from:x.id||x.className})));
+</script>
+
+</body>
+</html>
