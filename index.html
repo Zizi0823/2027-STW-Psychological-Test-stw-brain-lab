@@ -478,7 +478,7 @@ const TRACK_URL = "https://script.google.com/macros/s/AKfycbxqpvVx_AV4mj--tqz5Ea
 const SID = Math.random().toString(36).slice(2,10) + Date.now().toString(36);
 function track(event, extra){
   if(!TRACK_URL) return;
-  const body = JSON.stringify(Object.assign({event, sid:SID, ref:document.referrer||"", ua:navigator.userAgent}, extra||{}));
+  const body = JSON.stringify(Object.assign({event, sid:SID, ref:document.referrer||location.search||"", ua:navigator.userAgent}, extra||{}));
   try{
     if(navigator.sendBeacon && navigator.sendBeacon(TRACK_URL, new Blob([body],{type:"text/plain;charset=utf-8"}))) return;
   }catch(e){}
