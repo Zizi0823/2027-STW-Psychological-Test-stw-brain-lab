@@ -270,6 +270,46 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
 .modal img{width:100%;border-radius:8px;max-height:72vh;object-fit:contain;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .modal p{color:var(--paper);font-weight:700;font-size:14px;margin:0;text-align:center}
 
+/* invite banner on cover */
+.inv-banner{position:relative;z-index:3;margin:0 0 4px;background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:10px 14px;transform:rotate(-1.5deg);box-shadow:3px 4px 0 var(--ink);font-weight:900;font-size:15px;line-height:1.5;text-align:center;width:100%}
+.inv-banner b{background:var(--yellow);padding:0 4px}
+
+/* invite block */
+.invite{margin-top:30px;border:2.5px dashed var(--ink);border-radius:16px;padding:18px 16px;background:#fff;position:relative}
+.invite h2{font-size:21px;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.invite h2 .tape{font-size:13px;padding:2px 8px;transform:rotate(-3deg)}
+.invite p{margin:8px 0 0;font-size:14.5px;line-height:1.7;font-weight:700;color:var(--muted)}
+.invite p b{color:var(--ink)}
+.field{display:grid;gap:4px;margin-top:12px}
+.field label{font-size:12.5px;font-weight:900;color:var(--muted);letter-spacing:.04em}
+.field input{font:inherit;font-weight:700;font-size:16px;padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:var(--paper);color:var(--ink);width:100%}
+.invite .cta{margin-top:12px}
+.invite .msg{margin:8px 0 0;font-size:13px;font-weight:700;color:var(--ink);min-height:1em;text-align:center}
+.linkbox{margin-top:8px;font-size:12px;width:100%;padding:8px;border:1.5px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink)}
+
+/* pair result */
+.pair{margin-top:24px;background:var(--yellow);border:2.5px solid var(--ink);border-radius:16px;padding:18px 16px 20px;box-shadow:4px 5px 0 var(--ink);text-align:center;position:relative}
+.pair .badge{display:inline-block;background:var(--ink);color:var(--yellow);font-weight:900;font-size:14px;padding:4px 10px;transform:rotate(-2deg);border-radius:3px}
+.pair-head{font-size:clamp(19px,5.6vw,23px);font-weight:900;margin:10px 0 0}
+.duo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin-top:14px}
+.duo figure{margin:0;display:grid;justify-items:center;gap:6px;min-width:0}
+.duo .av{width:min(30vw,118px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:3px solid var(--ink);background:var(--paper)}
+.duo .av img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.05)}
+.duo figcaption{display:grid;gap:2px;min-width:0}
+.duo figcaption b{font-size:16px;font-weight:900;overflow-wrap:anywhere}
+.duo figcaption span{font-size:12.5px;font-weight:900;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px;padding:1px 8px;white-space:nowrap}
+.duo .x{font-family:var(--f-marker);font-size:34px;line-height:1}
+.score{margin-top:10px;display:flex;justify-content:center;align-items:baseline;gap:2px;font-weight:900;line-height:1}
+.score b{font-size:clamp(76px,24vw,104px);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score i{font-style:normal;font-size:clamp(30px,9vw,40px)}
+.pair h3{display:inline-block;margin-top:8px;font-size:clamp(22px,6.6vw,28px);font-weight:900;transform:rotate(-2deg);background:var(--paper);padding:2px 12px;border:2px solid var(--ink)}
+.pair .tier{margin:12px 0 0;font-weight:900;font-size:16px}
+.pair .desc{margin:6px auto 0;font-weight:700;font-size:14.5px;line-height:1.7;max-width:30em}
+.pair-actions{display:grid;gap:10px;margin-top:16px;text-align:left}
+.pair-actions .field label{color:var(--ink)}
+.pair-actions .field input{background:#fff}
+.pair .msg{margin:0;font-size:13px;font-weight:700;min-height:1em}
+
 /* end */
 .end h1{font-size:clamp(34px,10vw,44px);font-weight:900;line-height:1.25;margin-top:16px}
 .end p.lead{font-weight:700;font-size:16px;line-height:1.7;margin:14px 0 0}
@@ -306,6 +346,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
       <img src="img/home-trail.jpg" alt="">
     </div>
     <div class="cover-cta">
+      <div class="inv-banner" id="inv-banner" hidden></div>
       <button class="cta" id="btn-start">開始測驗 <span class="arrow">→</span></button>
     </div>
   </section>
@@ -367,6 +408,8 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
       <div class="res-art art torn-b"><img id="r-img" src="img/brain.jpg" alt=""></div>
       <div class="tags" id="r-tags"></div>
 
+      <div class="pair" id="r-pair" hidden></div>
+
       <div class="sec">
         <h2 class="sec-t">你的能力分析圖</h2>
         <svg class="radar" id="radar" viewBox="0 0 360 330" role="img" aria-label="能力分析雷達圖"></svg>
@@ -377,6 +420,14 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
         <h2 class="sec-t">最佳夥伴 <svg viewBox="0 0 34 20"><path d="M2 14c6-9 12 4 18-4s8-2 12-6M26 3l6 1-2 6"/></svg></h2>
         <div id="r-match"></div>
         <p class="fine">＊娛樂性人格配對，僅供參考。</p>
+      </div>
+
+      <div class="invite" id="r-invite">
+        <h2>找朋友測合拍度 <span class="tape y">好友不一定最合！</span></h2>
+        <p>把連結傳給朋友，他測完就會看到<b>你們的合拍指數</b>。死黨可能只有 50%，冤家搞不好 95%？</p>
+        <div class="field"><label for="nick">你的暱稱（選填，朋友會看到）</label><input id="nick" maxlength="8" placeholder="例如：小明" autocomplete="off"></div>
+        <button class="cta" id="btn-invite">分享邀請連結 <span class="arrow">→</span></button>
+        <p class="msg" id="invite-msg" aria-live="polite"></p>
       </div>
 
       <div class="power" id="r-power">
@@ -440,6 +491,21 @@ h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
     </div>
   </section>
 
+  <!-- PAIR VIEW -->
+  <section class="screen" id="s-pair" hidden>
+    <div class="pad">
+      <div class="topline">
+        <img class="logo" src="img/logo-stw.png" alt="See Think Wonder 思考挑戰賽">
+        <span class="hand">BRAIN<br>LAB</span>
+      </div>
+      <div id="pv-body"></div>
+      <div class="actions">
+        <a class="cta signup" href="https://www.stwchallenge.org/apply" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)" id="pv-signup">一起組隊報名 STW <span class="arrow">→</span></a>
+        <button class="cta dark" data-start>我也來測測看 <span class="arrow">→</span></button>
+      </div>
+    </div>
+  </section>
+
   <!-- END -->
   <section class="screen end" id="s-end" hidden>
     <div class="pad">
@@ -478,13 +544,14 @@ const TRACK_URL = "https://script.google.com/macros/s/AKfycbxqpvVx_AV4mj--tqz5Ea
 const SID = Math.random().toString(36).slice(2,10) + Date.now().toString(36);
 function track(event, extra){
   if(!TRACK_URL) return;
-  const body = JSON.stringify(Object.assign({event, sid:SID, ref:document.referrer||location.search||"", ua:navigator.userAgent}, extra||{}));
+  const body = JSON.stringify(Object.assign({event, sid:SID, ref:location.search||document.referrer||"", ua:navigator.userAgent}, extra||{}));
   try{
     if(navigator.sendBeacon && navigator.sendBeacon(TRACK_URL, new Blob([body],{type:"text/plain;charset=utf-8"}))) return;
   }catch(e){}
   try{ fetch(TRACK_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body,keepalive:true}); }catch(e){}
 }
 track("visit");
+window.__track = track;
 // 報名截止：2026/12/21 23:59（台灣時間）
 const DEADLINE = Date.UTC(2026, 11, 21, 15, 59, 59);
 // IG 帳號：換成 STW 正式帳號
@@ -681,12 +748,12 @@ function renderResult(){
   $("r-match").innerHTML = [["你最適合相處的人",T.mate],["你最適合合作的人",T.work]].map(([h,[k,txt]]) => `
     <div class="match"><div class="art"><img src="${TYPES[k].img}" alt=""></div>
     <div class="txt"><h4>${h}</h4><h3><span class="hl">${TYPES[k].name}</span></h3><p>${txt}</p></div></div>`).join("");
-  $("share-img").src = T.poster;
   const [en, zh] = T.stw.step.split("｜");
   $("p-step").innerHTML = en + "<small>" + zh + "</small>";
   $("p-text").textContent = T.stw.text;
   $("p-stage").textContent = T.stw.stage;
   updateCountdown();
+  renderPairOnResult();
   show("result");
 }
 
@@ -723,42 +790,311 @@ document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", 
   if(to==="result" && !result) return show("home");
   show(to);
 }));
-$("btn-share").addEventListener("click", () => { $("share-msg").textContent = "也可以長按圖片（手機）或按右鍵（電腦）另存"; $("modal").hidden = false; });
+$("btn-share").addEventListener("click", () => { if(result) openCard(drawPosterCard, "STW_" + TYPES[result.key].name + "_分享卡.png", "個人分享卡"); });
 
-// share card -> PNG
-function posterPng(src){
-  return new Promise((res, rej) => {
-    const im = new Image();
-    im.onload = () => {
-      const c = document.createElement("canvas");
-      c.width = im.naturalWidth; c.height = im.naturalHeight;
-      c.getContext("2d").drawImage(im, 0, 0);
-      c.toBlob(b => b ? res(b) : rej(new Error("png")), "image/png");
-    };
-    im.onerror = rej;
-    im.src = src;
+
+// ===== Social: invite links, compatibility, generated share cards =====
+const SITE_URL = "https://2027stwtest.vercel.app/";
+const __t = (ev, extra) => { try{ window.__track && window.__track(ev, extra); }catch(e){} };
+const KEY_CH = {detail:"d", logic:"l", brain:"b", action:"a"};
+const CH_KEY = {d:"detail", l:"logic", b:"brain", a:"action"};
+const DIM_NAMES = ["觀察力","推理力","創意力","表達力","共感力","行動力"];
+
+function encodePerson(key, stats){
+  return KEY_CH[key] + DIM_NAMES.map(d => Math.max(0, Math.min(100, stats[d]|0)).toString(36).padStart(2,"0")).join("");
+}
+function decodePerson(code){
+  if(!code || !/^[dlba][0-9a-z]{12}$/.test(code)) return null;
+  const v = []; for(let i=0;i<6;i++){ const n = parseInt(code.substr(1+i*2,2),36); if(!(n>=0 && n<=100)) return null; v.push(n); }
+  return {k: CH_KEY[code[0]], v};
+}
+function cleanName(n){ return (n||"").replace(/[<>&"'`\u0000-\u001f]/g,"").trim().slice(0,8); }
+
+const PAIRS = {
+  "brain|detail":  ["話題製造機","一個發現別人沒注意到的細節，一個把小事腦補成大故事，你們在一起永遠不缺話題。"],
+  "action|logic":  ["軍師與先鋒","一個把來龍去脈想清楚，一個說走就走。一個踩剎車、一個踩油門，剛剛好。"],
+  "action|detail": ["穩準快雙人組","一個不放過細節、一個不拖延進度，速度加上細心，任務又快又穩。"],
+  "brain|logic":   ["瘋狂科學家組合","一個丟出天馬行空的點子，一個把它拆成可行的步驟，提案想不驚艷都難。"],
+  "action|brain":  ["點子落地神隊友","一個負責「如果這樣會怎樣？」，一個負責「那就開始吧！」，想法馬上變成真的。"],
+  "detail|logic":  ["名偵探搭檔","一個找線索、一個推真相，你們聯手，再複雜的謎題都能破。"],
+  "detail|detail": ["雙倍放大鏡","兩個人都能一眼看出哪裡怪怪的，但小心太在意細節，誰都不敢先動手。"],
+  "logic|logic":   ["辯論社雙核心","兩個人都要講道理，聊天像在開會；一旦意見一致，誰都說不倒你們。"],
+  "brain|brain":   ["腦洞宇宙聯盟","點子一個接一個冒出來，聊天永遠停不下來，就是沒人記得要收尾。"],
+  "action|action": ["兩台推土機","兩個人都衝第一，效率爆表，但記得偶爾停下來看一下地圖。"]
+};
+const PAIR_BASE = {"detail|detail":68,"logic|logic":68,"brain|brain":68,"action|action":68,"brain|detail":84,"action|logic":84,"action|detail":88,"brain|logic":88,"action|brain":88,"detail|logic":76};
+const pairKey = (a,b) => [a,b].sort().join("|");
+function compat(A, B){
+  let cov=0, diff=0;
+  for(let i=0;i<6;i++){ cov += Math.max(A.v[i],B.v[i]); diff += Math.abs(A.v[i]-B.v[i]); }
+  cov /= 600; const sim = 1 - diff/600;
+  const raw = 0.5*PAIR_BASE[pairKey(A.k,B.k)] + 0.3*cov*100 + 0.2*sim*100;
+  return Math.max(35, Math.min(99, Math.round(40 + (raw-60)/18*58)));
+}
+function tierLine(n){
+  if(n >= 90) return "天選神隊友！不一起組隊說不過去";
+  if(n >= 80) return "默契滿分，一起出任務超放心";
+  if(n >= 65) return "越磨越合，互補空間超大";
+  return "相愛相殺組，吵著吵著就變神隊友";
+}
+function meAsPerson(){ return result ? {k: result.key, v: DIM_NAMES.map(d => result.stats[d])} : null; }
+
+// parse incoming link
+const QS_ = new URLSearchParams(location.search);
+const INVITER = decodePerson(QS_.get("i"));
+const INVITER_NAME = cleanName(QS_.get("n")) || "你的朋友";
+const FRIEND = decodePerson(QS_.get("j"));
+const FRIEND_NAME = cleanName(QS_.get("m")) || "朋友";
+
+function inviteUrl(name){
+  const p = new URLSearchParams({i: encodePerson(result.key, result.stats)});
+  if(name) p.set("n", name);
+  return SITE_URL + "?" + p.toString();
+}
+function pairViewUrl(myName){
+  const p = new URLSearchParams({i: QS_.get("i"), j: encodePerson(result.key, result.stats)});
+  if(QS_.get("n")) p.set("n", INVITER_NAME);
+  if(myName) p.set("m", myName);
+  return SITE_URL + "?" + p.toString();
+}
+
+async function shareOrCopy(text, url, msgEl){
+  const full = text + " " + url;
+  if(navigator.share){
+    try{ await navigator.share({text, url}); msgEl.textContent = "已開啟分享"; return true; }
+    catch(e){ if(e && e.name === "AbortError") return false; }
+  }
+  try{ await navigator.clipboard.writeText(full); msgEl.textContent = "已複製！貼到 IG、LINE 傳給朋友吧"; return true; }
+  catch(e){
+    msgEl.innerHTML = "";
+    const t = document.createElement("textarea"); t.className = "linkbox"; t.readOnly = true; t.rows = 3; t.value = full;
+    const p = document.createElement("span"); p.textContent = "請長按下面的文字全選複製：";
+    msgEl.append(p, t); t.focus(); t.select();
+    return false;
+  }
+}
+
+$("btn-invite").addEventListener("click", () => {
+  if(!result) return;
+  const name = cleanName($("nick").value);
+  const T = TYPES[result.key];
+  shareOrCopy(`我是「${T.name}」🧠 來測測我們的合拍指數有幾%？`, inviteUrl(name), $("invite-msg"));
+  __t("share", {type:"邀請連結"});
+});
+
+function pairHTML(A, nameA, B, nameB, n){
+  const [title, desc] = PAIRS[pairKey(A.k,B.k)];
+  const fig = (P, nm) => `<figure><div class="av"><img src="${TYPES[P.k].img}" alt=""></div><figcaption><b></b><span>${TYPES[P.k].name}</span></figcaption></figure>`;
+  return `<span class="badge">合拍指數</span>
+    <p class="pair-head"></p>
+    <div class="duo">${fig(A)}<span class="x">×</span>${fig(B)}</div>
+    <div class="score"><b data-n="${n}">${n}</b><i>%</i></div>
+    <h3>${title}</h3>
+    <p class="tier">${tierLine(n)}</p>
+    <p class="desc">${desc}</p>`;
+}
+function fillPair(el, A, nameA, B, nameB, head){
+  const n = compat(A, B);
+  el.innerHTML = pairHTML(A, nameA, B, nameB, n);
+  const caps = el.querySelectorAll(".duo figcaption b");
+  caps[0].textContent = nameA; caps[1].textContent = nameB;
+  el.querySelector(".pair-head").textContent = head;
+  countUp(el.querySelector(".score b"), n);
+  return n;
+}
+function countUp(el, n){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ el.textContent = n; return; }
+  const t0 = performance.now(), dur = 1100;
+  el.textContent = "0";
+  const step = t => { const p = Math.min(1,(t-t0)/dur); el.textContent = Math.round(n*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+
+function renderPairOnResult(){
+  const box = $("r-pair");
+  if(!INVITER || !result){ box.hidden = true; return; }
+  const me = meAsPerson();
+  box.hidden = false;
+  const n = fillPair(box, me, "你", INVITER, INVITER_NAME, `你 × ${INVITER_NAME} 的合拍指數`);
+  const act = document.createElement("div");
+  act.className = "pair-actions";
+  act.innerHTML = `<div class="field"><label for="pair-nick">你的暱稱（選填，會顯示在合拍卡上）</label><input id="pair-nick" maxlength="8" placeholder="例如：小華" autocomplete="off"></div>
+    <button class="cta dark" id="pair-card">↓ 下載合拍卡，標記 ${INVITER_NAME.replace(/[<>&]/g,"")}</button>
+    <button class="cta light" id="pair-send">把結果傳給 ${INVITER_NAME.replace(/[<>&]/g,"")}</button>
+    <p class="msg" id="pair-msg" aria-live="polite"></p>
+    <a class="cta signup" href="${SIGNUP_URL}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)">一起組隊報名 STW <span class="arrow">→</span></a>`;
+  box.appendChild(act);
+  const nickEl = $("pair-nick");
+  nickEl.addEventListener("input", () => { $("nick").value = nickEl.value; });
+  $("pair-card").addEventListener("click", () => {
+    const myName = cleanName(nickEl.value) || "我";
+    openCard(() => drawPairCard(me, myName, INVITER, INVITER_NAME, n), `STW_合拍卡_${n}.png`, "合拍卡");
+  });
+  $("pair-send").addEventListener("click", () => {
+    const myName = cleanName(nickEl.value);
+    shareOrCopy(`我們的合拍指數是 ${n}%！快來看`, pairViewUrl(myName), $("pair-msg"));
+    __t("share", {type:"回傳合拍結果"});
   });
 }
+
+function renderPairView(){
+  const n = (() => { const el = $("pv-body"); el.className = "pair"; return fillPair(el, FRIEND, FRIEND_NAME, INVITER, INVITER_NAME, `${FRIEND_NAME} × ${INVITER_NAME}`); })();
+  const act = document.createElement("div");
+  act.className = "pair-actions";
+  act.innerHTML = `<button class="cta dark" id="pv-card">↓ 下載合拍卡</button><p class="msg" id="pv-msg" aria-live="polite"></p>`;
+  $("pv-body").appendChild(act);
+  $("pv-card").addEventListener("click", () => openCard(() => drawPairCard(FRIEND, FRIEND_NAME, INVITER, INVITER_NAME, n), `STW_合拍卡_${n}.png`, "合拍卡"));
+  show("pair");
+}
+
+// ---- canvas card rendering ----
+const FONT = '"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",sans-serif';
+const C = {yellow:"#F7C72B", ink:"#161513", paper:"#F4EFE3", white:"#FFFFFF", muted:"#5D574B"};
+const imgCache = {};
+function loadImg(src){
+  if(!imgCache[src]) imgCache[src] = new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; });
+  return imgCache[src];
+}
+async function ensureFonts(texts){
+  try{
+    const all = texts.join("") + "0123456789%×@：「」！？，。・／";
+    await Promise.all([document.fonts.load(`900 80px "Noto Sans TC"`, all), document.fonts.load(`700 40px "Noto Sans TC"`, all)]);
+  }catch(e){}
+}
+function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function rot(ctx, cx, cy, deg, fn){ ctx.save(); ctx.translate(cx,cy); ctx.rotate(deg*Math.PI/180); ctx.translate(-cx,-cy); fn(); ctx.restore(); }
+function cover(ctx, im, x, y, w, h, fy){
+  const s = Math.max(w/im.naturalWidth, h/im.naturalHeight);
+  const sw = w/s, sh = h/s, sx = (im.naturalWidth-sw)/2, sy = Math.max(0, Math.min(im.naturalHeight-sh, (im.naturalHeight-sh)*(fy==null?.5:fy)));
+  ctx.drawImage(im, sx, sy, sw, sh, x, y, w, h);
+}
+function lines(ctx, text, maxW){
+  const NO_START = "，。、！？；：」』）%…";
+  const out = []; let cur = "";
+  for(const ch of text){
+    if(ctx.measureText(cur+ch).width > maxW && cur && !NO_START.includes(ch)){ out.push(cur); cur = ch; }
+    else cur += ch;
+  }
+  if(cur) out.push(cur); return out;
+}
+function paperBlock(ctx, x, y, w, h, deg, fill){
+  rot(ctx, x+w/2, y+h/2, deg, () => {
+    ctx.fillStyle = C.ink; ctx.fillRect(x+10, y+12, w, h);
+    ctx.fillStyle = fill || C.paper; ctx.fillRect(x, y, w, h);
+    ctx.lineWidth = 5; ctx.strokeStyle = C.ink; ctx.strokeRect(x, y, w, h);
+  });
+}
+function bg(ctx, W, H){
+  ctx.fillStyle = C.yellow; ctx.fillRect(0,0,W,H);
+  let seed = 7; const rnd = () => (seed = (seed*16807) % 2147483647) / 2147483647;
+  for(let i=0;i<5000;i++){ ctx.fillStyle = `rgba(22,21,19,${(rnd()*0.07).toFixed(3)})`; ctx.fillRect(rnd()*W, rnd()*H, 2, 2); }
+}
+function spark(ctx, x, y, r, fill){
+  ctx.beginPath(); ctx.moveTo(x, y-r);
+  ctx.quadraticCurveTo(x+r*.12, y-r*.12, x+r, y); ctx.quadraticCurveTo(x+r*.12, y+r*.12, x, y+r);
+  ctx.quadraticCurveTo(x-r*.12, y+r*.12, x-r, y); ctx.quadraticCurveTo(x-r*.12, y-r*.12, x, y-r);
+  ctx.fillStyle = fill || C.ink; ctx.fill();
+}
+async function drawLogo(ctx){
+  const logo = await loadImg("img/logo-stw.png");
+  paperBlock(ctx, 56, 60, 470, 160, -2);
+  rot(ctx, 291, 140, -2, () => ctx.drawImage(logo, 80, 74, 420, 132));
+}
+function text(ctx, str, x, y, size, weight, color, align){
+  ctx.font = `${weight} ${size}px ${FONT}`; ctx.fillStyle = color; ctx.textAlign = align || "left"; ctx.textBaseline = "alphabetic"; ctx.fillText(str, x, y);
+}
+
+async function drawPosterCard(){
+  const im = await loadImg(TYPES[result.key].poster);
+  const cv = document.createElement("canvas"); cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext("2d").drawImage(im, 0, 0);
+  return cv;
+}
+
+async function drawPairCard(A, nameA, B, nameB, n){
+  const W = 1080, H = 1920;
+  const [title, desc] = PAIRS[pairKey(A.k,B.k)];
+  await ensureFonts(["我們的合拍指數", nameA, nameB, TYPES[A.k].name, TYPES[B.k].name, title, desc, tierLine(n), "一起組隊挑戰 STW 思考挑戰賽", "12/21 報名截止・免費參加・12–18 歲", "掃我測合拍"]);
+  const [ia, ib, qr] = await Promise.all([loadImg(TYPES[A.k].img), loadImg(TYPES[B.k].img), loadImg("img/qr-pair.png")]);
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+  const ctx = cv.getContext("2d");
+  bg(ctx, W, H);
+  await drawLogo(ctx);
+  spark(ctx, 960, 130, 46); spark(ctx, 870, 220, 22);
+  paperBlock(ctx, 150, 290, 780, 140, -2);
+  rot(ctx, 540, 360, -2, () => text(ctx, "我們的合拍指數", 540, 392, 92, 900, C.ink, "center"));
+  // duo
+  const circ = (im, cx, cy) => {
+    ctx.fillStyle = C.ink; ctx.beginPath(); ctx.arc(cx+10, cy+12, 190, 0, Math.PI*2); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, 190, 0, Math.PI*2); ctx.clip(); ctx.fillStyle = C.paper; ctx.fillRect(cx-190, cy-190, 380, 380);
+    ctx.filter = "grayscale(1) contrast(1.05)"; cover(ctx, im, cx-190, cy-190, 380, 380, .22); ctx.restore();
+    ctx.lineWidth = 8; ctx.strokeStyle = C.ink; ctx.beginPath(); ctx.arc(cx, cy, 190, 0, Math.PI*2); ctx.stroke();
+  };
+  circ(ia, 286, 680); circ(ib, 794, 680);
+  text(ctx, "×", 540, 720, 120, 900, C.ink, "center");
+  const label = (nm, tp, cx) => {
+    ctx.font = `900 56px ${FONT}`; let s = nm; while(ctx.measureText(s).width > 440 && s.length > 1) s = s.slice(0,-1);
+    text(ctx, s, cx, 948, 56, 900, C.ink, "center");
+    ctx.font = `900 36px ${FONT}`; const w = ctx.measureText(tp).width + 40;
+    ctx.fillStyle = C.paper; rr(ctx, cx-w/2, 972, w, 58, 29); ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = C.ink; ctx.stroke();
+    text(ctx, tp, cx, 1014, 36, 900, C.ink, "center");
+  };
+  label(nameA, TYPES[A.k].name, 286); label(nameB, TYPES[B.k].name, 794);
+  // score
+  ctx.font = `900 300px ${FONT}`; const sw = ctx.measureText(String(n)).width;
+  ctx.font = `900 120px ${FONT}`; const pw = ctx.measureText("%").width;
+  const sx = 540 - (sw+pw)/2;
+  text(ctx, String(n), sx, 1330, 300, 900, C.ink); text(ctx, "%", sx+sw+6, 1330, 120, 900, C.ink);
+  // title tape
+  ctx.font = `900 76px ${FONT}`; const tw = Math.min(960, ctx.measureText(title).width + 70);
+  paperBlock(ctx, 540-tw/2, 1370, tw, 116, -2);
+  rot(ctx, 540, 1428, -2, () => text(ctx, title, 540, 1455, 76, 900, C.ink, "center"));
+  text(ctx, tierLine(n), 540, 1570, 46, 900, C.ink, "center");
+  ctx.font = `700 36px ${FONT}`;
+  lines(ctx, desc, 900).slice(0,2).forEach((ln, i) => text(ctx, ln, 540, 1630 + i*50, 36, 700, C.ink, "center"));
+  // footer bar
+  ctx.fillStyle = C.ink; rr(ctx, 40, 1716, 1000, 180, 28); ctx.fill();
+  text(ctx, "一起組隊挑戰 STW 思考挑戰賽", 80, 1792, 44, 900, C.yellow);
+  text(ctx, "12/21 報名截止・免費參加・12–18 歲", 80, 1852, 32, 700, C.paper);
+  ctx.fillStyle = C.white; rr(ctx, 870, 1730, 152, 152, 12); ctx.fill();
+  ctx.drawImage(qr, 878, 1738, 136, 136);
+  return cv;
+}
+
+// modal with generated card
+let cardState = null;
+async function openCard(drawFn, filename, kind){
+  const img = $("share-img"), msg = $("share-msg");
+  $("modal").hidden = false;
+  img.removeAttribute("src"); img.style.minHeight = "50vh"; msg.textContent = "產生分享卡中…";
+  try{
+    const cv = await drawFn();
+    const blob = await new Promise((res, rej) => cv.toBlob(b => b ? res(b) : rej(new Error("png")), "image/png"));
+    cardState = {blob, filename, kind};
+    img.src = cv.toDataURL("image/png"); img.style.minHeight = "";
+    msg.textContent = "也可以長按圖片（手機）或按右鍵（電腦）另存";
+  }catch(e){
+    cardState = null; msg.textContent = "分享卡產生失敗，請重新整理再試一次";
+  }
+}
+
 let dlCap;
 const dlReady = (window.claude && window.claude.use) ? window.claude.use("downloads").then(d => (dlCap = d)).catch(() => (dlCap = null)) : Promise.resolve(dlCap = null);
-$("share-dl").addEventListener("click", () => track("share",{type:result?TYPES[result.key].name:""}));
 $("share-dl").addEventListener("click", async () => {
-  if(!result) return;
-  const T = TYPES[result.key];
-  const name = "STW_" + T.name + "_分享卡.png";
   const msg = $("share-msg");
-  msg.textContent = "準備圖片中…";
+  if(!cardState){ msg.textContent = "分享卡還在產生中，請稍等"; return; }
+  const {blob, filename, kind} = cardState;
+  __t("share", {type: kind});
   try{
-    const blob = await posterPng(T.poster);
     await dlReady;
     if(dlCap){
-      try{ await dlCap.save({filename:name, data:blob}); msg.textContent = "已下載分享卡 PNG"; }
+      try{ await dlCap.save({filename, data:blob}); msg.textContent = "已下載分享卡 PNG"; }
       catch(e){ msg.textContent = e && e.code === "declined" ? "已取消下載" : "這裡無法下載，請長按圖片（手機）或按右鍵（電腦）另存"; }
       return;
     }
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 4000);
     msg.textContent = "已下載分享卡 PNG（iPhone 若沒反應，請長按圖片存到照片）";
   }catch(e){
@@ -774,6 +1110,14 @@ document.addEventListener("keydown", e => {
     $("q-opts").children[i]?.click();
   }
 });
+if(INVITER){
+  const b = $("inv-banner");
+  b.hidden = false;
+  b.innerHTML = "<span></span> 邀請你測合拍度！<br>做完 8 題就知道你們合拍幾 %";
+  b.querySelector("span").textContent = `${INVITER_NAME}（${TYPES[INVITER.k].name}）`;
+  $("btn-start").firstChild.textContent = "開始測合拍度 ";
+  if(FRIEND) renderPairView();
+}
 const su = $("btn-signup");
 if(SIGNUP_URL === "#"){ su.removeAttribute("target"); su.addEventListener("click", e => { e.preventDefault(); su.querySelector(".arrow").textContent = "（連結待設定）"; }); }
 else su.href = SIGNUP_URL;
